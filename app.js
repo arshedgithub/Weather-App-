@@ -1,4 +1,4 @@
-var APIKey = '71bc351b35dc6367546d9b2b2a711f68';
+var APIKey = '71bc351b35dc6367546d9b2b2a711f68'
 
 var display = document.getElementById('display');
 var displayForecast = document.getElementById('forecast');
