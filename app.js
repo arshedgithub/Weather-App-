@@ -1,4 +1,4 @@
-var APIKey = '71bc351b35dc6367546d9b2b2a711f68'
+var APIKey = '71bc351b35dc6367546d9b2b2a711f68';
 
 var display = document.getElementById('display');
 var displayForecast = document.getElementById('forecast');
@@ -17,7 +17,7 @@ function displayCurrentWeather(){
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
             var data = JSON.parse(http.response)
-
+            console.log(data);
             // destructuring 
             var { temp, pressure, humidity } = data.main
 
@@ -25,7 +25,7 @@ function displayCurrentWeather(){
             var weatherDescription = data.weather[0].description;
             
             // template string 
-            display.innerHTML = `<div style="font-size: 25px; font-weight: bold">${weather}</div><div>${weatherDescription}</div><br><div>Temperature :  ${temp} K</div><div>Humidity : ${humidity}</div><div>Pressure : ${pressure}</div>`
+            display.innerHTML = `<div>${data.name}</div><br><div style="font-size: 25px; font-weight: bold">${weather}</div><div>${weatherDescription}</div><br><div>Temperature :  ${temp} K</div><div>Humidity : ${humidity}</div><div>Pressure : ${pressure}</div>`
             
         } else if (http.status == 404){
             var error = JSON.parse(http.response).message;
@@ -49,7 +49,6 @@ function displayWeatherForecast(){
         if (http.readyState == 4 && http.status == 200) {
             var data = JSON.parse(http.response);
 
-            console.log(data);
             displayForecast.innerHTML = '';
 
             for (let i = 0; i <= 10; i++) {
